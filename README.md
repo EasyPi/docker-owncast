@@ -15,7 +15,7 @@ personally control and regain ownership over your content.
 version: "3.8"
 services:
   owncast:
-    image: owncast/owncast
+    image: easypi/owncast
     command: /app/owncast -backupdir=/data -database=/data/database.db
     ports:
       - "1935:1935"
