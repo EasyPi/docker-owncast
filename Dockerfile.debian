@@ -1,0 +1,26 @@
+#
+# Dockerfile for owncast
+#
+
+FROM debian:bullseye
+MAINTAINER EasyPi Software Foundation
+
+ARG TARGETPLATFORM
+ARG OWNCAST_VERSION
+
+WORKDIR /app
+
+RUN set -xe \
+ && OWNCAST_ARCH=$(echo $TARGETPLATFORM | sed -e 's@linux/@@' \
+                                              -e 's@386@32bit@' \
+                                              -e 's@amd64@64bit@' \
+                                              -e 's@arm/v7@arm7@' \
+                                              -e 's@arm64@arm64@') \
+ && OWNCAST_FILE=owncast-${OWNCAST_VERSION}-linux-${OWNCAST_ARCH}.zip \
+ && apt update -y \
+ && apt install -y curl ffmpeg unzip \
+ && curl -sSLO https://github.com/owncast/owncast/releases/download/v${OWNCAST_VERSION}/${OWNCAST_FILE} \
+ && unzip ${OWNCAST_FILE} \
+ && rm -rf ${OWNCAST_FILE} /var/lib/apt/lists/*
+
+CMD ["/app/owncast"]
