@@ -1,5 +1,7 @@
-owncast
-=======
+[OBSOLETE] owncast
+==================
+
+PLEASE USE THE OFFICIAL DOCKER IMAGE: https://owncast.online/quickstart/container/
 
 [![](https://github.com/easypi/docker-owncast/actions/workflows/build.yaml/badge.svg)](https://github.com/EasyPi/docker-owncast)
 
@@ -20,7 +22,7 @@ services:
       - "1935:1935"
       - "8080:8080"
     volumes:
-      - ./data:/data
+      - ./data:/app/data
     restart: unless-stopped
 ```
 
