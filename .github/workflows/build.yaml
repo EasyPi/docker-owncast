@@ -10,7 +10,7 @@ on:
 
 env:
   IMAGE_NAME: 'easypi/owncast'
-  OWNCAST_VERSION: '0.0.13'
+  OWNCAST_VERSION: '0.1.0'
 
 jobs:
   release:
