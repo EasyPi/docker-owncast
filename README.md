@@ -15,14 +15,19 @@ personally control and regain ownership over your content.
 version: "3.8"
 services:
   owncast:
-    image: easypi/owncast
-    command: /app/owncast -backupdir=/data -database=/data/database.db
+    image: owncast/owncast
     ports:
       - "1935:1935"
       - "8080:8080"
     volumes:
       - ./data:/data
     restart: unless-stopped
+```
+
+```bash
+$ mkdir -m 777 data
+$ docker-compose up -d
+$ curl 127.0.0.1:8080/admin
 ```
 
 ## Using with OBS / Streamlabs
